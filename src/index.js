@@ -1,7 +1,15 @@
 const axios = require('axios');
 const BASE_URL = "https://swapi.co/api";
 
-const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull } = require('graphql');
+const {
+    graphql,
+    GraphQLSchema,
+    GraphQLObjectType,
+    GraphQLString,
+    GraphQLInt,
+    GraphQLList,
+    GraphQLNonNull
+} = require('graphql');
 
 
 /**
@@ -15,28 +23,34 @@ const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, Gr
  */
 function request(type, id) {
     let url = `${BASE_URL}/${type}/${id}/`;
+    console.log(`Requesting: ${url}`);
 
     return axios.get(url)
         .then(resp => resp.data);
 }
 
+
 // Note that numeric values are kept as strings because that is how the REST API returns them.
+// Films and residents are returned from the API as lists of URLs and not actual objects.
 const Planet = new GraphQLObjectType({
     name: 'PlanetType',
     fields: {
         name: { type: new GraphQLNonNull(GraphQLString) },
         climate: { type: GraphQLString },
-        terrain: { type: GraphQLString },
         diameter: { type: GraphQLString },
         edited: { type: GraphQLString },
+        films: { type: new GraphQLList(GraphQLString) },
         gravity: { type: GraphQLString },
         orbital_period: { type: GraphQLString },
         population: { type: GraphQLString },
+        residents: { type: new GraphQLList(GraphQLString) },
         rotation_period: { type: GraphQLString },
+        terrain: { type: GraphQLString },
         surface_water: { type: GraphQLString },
         url: { type: GraphQLString },
     }
 });
+
 
 
 const Schema = new GraphQLSchema({
@@ -69,10 +83,12 @@ const Query = `
             terrain
             gravity
             orbital_period
+            films
+            residents
         }
     }
 `;
 
 
 graphql(Schema, Query, Resolvers)
-    .then(res => console.log(res));
+    .then(res => console.log(JSON.stringify(res, null, 4)));
