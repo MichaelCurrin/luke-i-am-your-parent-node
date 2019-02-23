@@ -1,7 +1,11 @@
 # Luke I Am Your Parent Node
 > GraphQL wrapper for Star Wars API, written in NodeJS
 
-I'm a fan of Star Wars so was delighted to discover the [SWAPI](https://swapi.co/), which provides a public REST API around some Star Wars content like characters, vehicles and planets. After attending an introductory GraphQL workshop, I decided to build a GraphQL endpoint based on the REST API.
+Do queries for Star Wars data in the [SWAPI](https://swapi.co/), using [GraphQL](https://graphql.org/) queries.
+
+## Background
+
+I attended introductory GraphQL workshop at [Codebridge](https://codebridge.org.za/). An exercise at the end was of the one section was to use [NodeJS](https://nodejs.org/en/) and [graphql-js](https://graphql.org/graphql-js/) to build a GraphQL wrapper around an existing REST API. I decided on a Star Wars API ([SWAPI](https://swapi.co/)) which I'd found before and that turned into this repo.
 
 
 ## Installation
@@ -28,6 +32,6 @@ npm install
 
 Run the main script.
 
-```
+```bash
 npm run main
 ```
