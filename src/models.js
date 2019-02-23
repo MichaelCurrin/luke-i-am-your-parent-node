@@ -19,7 +19,7 @@ const lib = require('./lib');
 /**
  * Planet GraphQL object.
  *
- * Films and residents are returned from the API as lists of URLs and not actual objects.
+ * Films and residents are returned from the API as lists of URLs and not actual detaileds objects.
  */
 const Planet = new GraphQLObjectType({
     name: 'PlanetType',
@@ -44,7 +44,9 @@ const Planet = new GraphQLObjectType({
 /**
  * GraphQL schema.
  *
- * Defines how the objects in the model are structured.
+ * Defines how the objects in the model are structured. Setting args for an object
+ * means that the values can be passed in with a query e.g. to lookup a planet by
+ * its ID.
  */
 const Schema = new GraphQLSchema({
     query: new GraphQLObjectType({
@@ -64,7 +66,8 @@ const Schema = new GraphQLSchema({
 /**
  * GraphQL resolving functions.
  *
- * Defines how to handle a query for each object type.
+ * Defines how to handle a query for each object type. An ID is expected for the resource type
+ * and that value is used to create and execute a query URL.
  */
 const Resolvers = {
     planet: ({ id }) => {
