@@ -1,6 +1,7 @@
 /**
- * Models.
+ * Models module.
  *
+ * Define schema objects, the schema and the resolvers.
  * Note that numeric values are kept as strings because that is how the REST API returns them.
  */
 const {

@@ -1,5 +1,8 @@
 /**
- * Main script.
+ * Main application script.
+ *
+ * Use the GraphQL schema to fetch data from SWAPI for a specified
+ * planet and log the results.
  */
 const { graphql } = require('graphql');
 

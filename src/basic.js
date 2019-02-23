@@ -1,5 +1,5 @@
 /**
- * Basic demo of hardcoded fetching and printing of data.
+ * Basic demo of fetching and printing of SWAP data using a fixed URL.
  */
 const axios = require('axios');
 
