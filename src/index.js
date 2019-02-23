@@ -1,11 +1,10 @@
 /**
  * Main script.
  */
-
-
 const { graphql } = require('graphql');
 
 const models = require('./models');
+
 
 const query = `
     query {

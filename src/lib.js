@@ -1,7 +1,6 @@
 /**
  * Lib module
  */
-
 const axios = require('axios');
 
 const BASE_URL = "https://swapi.co/api";

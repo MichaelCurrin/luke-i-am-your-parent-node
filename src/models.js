@@ -3,8 +3,6 @@
  *
  * Note that numeric values are kept as strings because that is how the REST API returns them.
  */
-
-
 const {
     GraphQLSchema,
     GraphQLObjectType,
@@ -13,7 +11,6 @@ const {
     GraphQLInt,
     GraphQLList,
 } = require('graphql');
-
 
 const lib = require('./lib');
 
