@@ -1,7 +1,7 @@
 const axios = require('axios');
 const BASE_URL = "https://swapi.co/api";
 
-const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLNonNull } = require('graphql');
+const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLInt, GraphQLNonNull } = require('graphql');
 
 
 /**
@@ -10,10 +10,12 @@ const { graphql, GraphQLSchema, GraphQLObjectType, GraphQLString, GraphQLNonNull
  * @param string type Name of object type to lookup. Must be one of the values
  *      defined here: https://swapi.co/documentation#root .
  * @param numeric id The ID of the object to look up within the type.
+ *
+ * @return Promise A resolved promise containing the data if the request was successful.
  */
 function request(type, id) {
     let url = `${BASE_URL}/${type}/${id}/`;
-    console.log(url)
+
     return axios.get(url)
         .then(resp => resp.data);
 }
@@ -23,13 +25,13 @@ const Planet = new GraphQLObjectType({
     name: 'PlanetType',
     fields: {
         climate: {
-            type: GraphQLNonNull(GraphQLString)
+            type: new GraphQLNonNull(GraphQLString)
         },
         name: {
-            type: GraphQLNonNull(GraphQLString)
+            type: new GraphQLNonNull(GraphQLString)
         },
         terrain: {
-            type: GraphQLNonNull(GraphQLString)
+            type: new GraphQLNonNull(GraphQLString)
         }
     }
 });
@@ -40,7 +42,10 @@ const Schema = new GraphQLSchema({
         name: "QueryType",
         fields: {
             planet: {
-                type: Planet
+                type: Planet,
+                args: {
+                    id: { type: new GraphQLNonNull(GraphQLInt) }
+                },
             }
         }
     })
@@ -48,15 +53,15 @@ const Schema = new GraphQLSchema({
 
 
 const Resolvers = {
-    planet() {
-        return request('planets', 1);
+    planet: ({ id }) => {
+        return request('planets', id);
     }
 };
 
 
 const Query = `
     query {
-        planet {
+        planet (id: 1) {
             climate
             name
             terrain
