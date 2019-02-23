@@ -1,4 +1,4 @@
-# Luke I Am Your Parent Node
+# Luke, I Am Your Parent Node
 > GraphQL wrapper for Star Wars API, written in NodeJS
 
 Do queries for Star Wars data in the [SWAPI](https://swapi.co/), using [GraphQL](https://graphql.org/) queries.
