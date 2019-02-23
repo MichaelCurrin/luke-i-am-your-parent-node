@@ -20,19 +20,21 @@ function request(type, id) {
         .then(resp => resp.data);
 }
 
-
+// Note that numeric values are kept as strings because that is how the REST API returns them.
 const Planet = new GraphQLObjectType({
     name: 'PlanetType',
     fields: {
-        climate: {
-            type: new GraphQLNonNull(GraphQLString)
-        },
-        name: {
-            type: new GraphQLNonNull(GraphQLString)
-        },
-        terrain: {
-            type: new GraphQLNonNull(GraphQLString)
-        }
+        name: { type: new GraphQLNonNull(GraphQLString) },
+        climate: { type: GraphQLString },
+        terrain: { type: GraphQLString },
+        diameter: { type: GraphQLString },
+        edited: { type: GraphQLString },
+        gravity: { type: GraphQLString },
+        orbital_period: { type: GraphQLString },
+        population: { type: GraphQLString },
+        rotation_period: { type: GraphQLString },
+        surface_water: { type: GraphQLString },
+        url: { type: GraphQLString },
     }
 });
 
@@ -65,6 +67,8 @@ const Query = `
             climate
             name
             terrain
+            gravity
+            orbital_period
         }
     }
 `;
