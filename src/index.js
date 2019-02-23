@@ -7,8 +7,8 @@ const models = require('./models');
 
 
 const query = `
-    query {
-        planet (id: 1) {
+    query FetchPlanet($id: Int!) {
+        planet (id: $id) {
             climate
             name
             terrain
@@ -19,7 +19,8 @@ const query = `
         }
     }
 `;
+const params = { id: 1 };
 
 
-graphql(models.Schema, query, models.Resolvers)
+graphql(models.Schema, query, models.Resolvers, null, params)
     .then(res => console.log(JSON.stringify(res, null, 4)));
