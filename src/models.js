@@ -4,12 +4,18 @@
  * Note that numeric values are kept as strings because that is how the REST API returns them.
  */
 
+
 const {
+    GraphQLSchema,
     GraphQLObjectType,
+    GraphQLNonNull,
     GraphQLString,
+    GraphQLInt,
     GraphQLList,
-    GraphQLNonNull
 } = require('graphql');
+
+
+const lib = require('./lib');
 
 
 // Films and residents are returned from the API as lists of URLs and not actual objects.
@@ -33,6 +39,29 @@ const Planet = new GraphQLObjectType({
 });
 
 
+const Schema = new GraphQLSchema({
+    query: new GraphQLObjectType({
+        name: "QueryType",
+        fields: {
+            planet: {
+                type: Planet,
+                args: {
+                    id: { type: new GraphQLNonNull(GraphQLInt) }
+                },
+            }
+        }
+    })
+});
+
+
+const Resolvers = {
+    planet: ({ id }) => {
+        return lib.request('planets', id);
+    }
+};
+
+
 module.exports = {
-    Planet: Planet
+    Schema: Schema,
+    Resolvers: Resolvers,
 }
