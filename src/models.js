@@ -16,7 +16,11 @@ const {
 const lib = require('./lib');
 
 
-// Films and residents are returned from the API as lists of URLs and not actual objects.
+/**
+ * Planet GraphQL object.
+ *
+ * Films and residents are returned from the API as lists of URLs and not actual objects.
+ */
 const Planet = new GraphQLObjectType({
     name: 'PlanetType',
     fields: {
@@ -37,6 +41,11 @@ const Planet = new GraphQLObjectType({
 });
 
 
+/**
+ * GraphQL schema.
+ *
+ * Defines how the objects in the model are structured.
+ */
 const Schema = new GraphQLSchema({
     query: new GraphQLObjectType({
         name: "QueryType",
@@ -52,6 +61,11 @@ const Schema = new GraphQLSchema({
 });
 
 
+/**
+ * GraphQL resolving functions.
+ *
+ * Defines how to handle a query for each object type.
+ */
 const Resolvers = {
     planet: ({ id }) => {
         return lib.request('planets', id);
