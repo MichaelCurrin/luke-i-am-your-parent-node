@@ -1,12 +1,19 @@
 # Luke, I Am Your Parent Node
 > GraphQL wrapper for Star Wars API, written in NodeJS
 
-Do queries for Star Wars data in the [SWAPI](https://swapi.co/), using [GraphQL](https://graphql.org/) queries. Graph data is all about nodes and how they relate to each other, hence the title of this project.
+The [SWAPI](https://swapi.co/) let's you view data around objects in the Star Wars universe, like vehicles, people and planets. This project allows fetching of data using the [GraphQL](https://graphql.org/) standard to abstract away from REST API requests to [SWAPI](https://swapi.co/).
 
+Advantages of this wrapper:
+
+- Select just the fields you need.
+- Combine object type results (e.g. vehicles and planets) below each other in a single query.
+- TO BE COMPLETED: Use a single query to unpack nested data, such as residents on a planet. The wrapper handles the extra requests needed to lookup the object based on their IDs, however this can take longer when fetching many objects.
 
 ## Background
 
 I attended an introductory GraphQL workshop at [Codebridge](https://codebridge.org.za/). An exercise at the end was of the one section was to use [NodeJS](https://nodejs.org/en/) and [graphql-js](https://graphql.org/graphql-js/) to build a GraphQL wrapper around an existing REST API. I decided on a Star Wars API ([SWAPI](https://swapi.co/)) which I'd found before and that turned into this repo.
+
+Graph data is all about nodes and how they relate to each other, hence the title of this project.
 
 
 ## Installation
@@ -66,4 +73,5 @@ Requesting: https://swapi.co/api/planets/1/
         }
     }
 }
+...
 ```
