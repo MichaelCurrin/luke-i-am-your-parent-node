@@ -108,10 +108,10 @@ const Schema = new GraphQLSchema({
  */
 const Resolvers = {
     planet: ({ id }) => {
-        return lib.request('planets', id);
+        return lib.requestAPI('planets', id);
     },
     film: ({ id }) => {
-        return lib.request('films', id);
+        return lib.requestAPI('films', id);
     }
 };
 

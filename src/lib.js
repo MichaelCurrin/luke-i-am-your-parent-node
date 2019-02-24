@@ -7,7 +7,7 @@ const BASE_URL = "https://swapi.co/api";
 
 
 /**
- * Request a Star Wars object from the API and return the response JSON data.
+ * Request a Star Wars object or objects from the API and return the response JSON data.
  *
  * @param string type Name of object type to lookup. Must be one of the values
  *      defined here: https://swapi.co/documentation#root .
@@ -16,8 +16,10 @@ const BASE_URL = "https://swapi.co/api";
  * @return Promise A resolved promise containing the data if the request was successful.
  *     There is other metadata on the response but we just use the data attribute.
  */
-function request(type, id) {
-    let url = `${BASE_URL}/${type}/${id}/`;
+function requestAPI(type, id=null) {
+    let url = `${BASE_URL}/${type}/`;
+    if (id)
+        url = `${url}${id}/`;
     console.log(`Requesting: ${url}`);
 
     return axios.get(url)
@@ -26,5 +28,5 @@ function request(type, id) {
 
 
 module.exports = {
-    request: request,
+    requestAPI: requestAPI,
 }
