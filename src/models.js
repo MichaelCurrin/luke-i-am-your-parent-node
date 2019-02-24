@@ -3,6 +3,9 @@
  *
  * Define schema objects, the schema and the resolvers.
  * Note that numeric values are kept as strings because that is how the REST API returns them.
+ *
+ * The SWAPI schema indicates if a value is required and that is then applied as non-null constraint
+ * here.
  */
 const {
     GraphQLSchema,
@@ -19,24 +22,52 @@ const lib = require('./lib');
 /**
  * Planet GraphQL object.
  *
- * Films and residents are returned from the API as lists of URLs and not actual detaileds objects.
+ * Films and residents are returned from the API as lists of URLs and not actual detailed objects.
  */
 const Planet = new GraphQLObjectType({
     name: 'PlanetType',
     fields: {
         name: { type: new GraphQLNonNull(GraphQLString) },
-        climate: { type: GraphQLString },
-        diameter: { type: GraphQLString },
-        edited: { type: GraphQLString },
+        url: { type: new GraphQLNonNull(GraphQLString) },
+
+        climate: { type: new GraphQLNonNull(GraphQLString) },
+        diameter: { type: new GraphQLNonNull(GraphQLString) },
+        edited: { type: new GraphQLNonNull(GraphQLString) },
+        gravity: { type: new GraphQLNonNull(GraphQLString) },
+        orbital_period: { type: new GraphQLNonNull(GraphQLString) },
+        population: { type: new GraphQLNonNull(GraphQLString) },
+        rotation_period: { type: new GraphQLNonNull(GraphQLString) },
+        surface_water: { type: new GraphQLNonNull(GraphQLString) },
+        terrain: { type: new GraphQLNonNull(GraphQLString) },
+
         films: { type: new GraphQLList(GraphQLString) },
-        gravity: { type: GraphQLString },
-        orbital_period: { type: GraphQLString },
-        population: { type: GraphQLString },
         residents: { type: new GraphQLList(GraphQLString) },
-        rotation_period: { type: GraphQLString },
-        terrain: { type: GraphQLString },
-        surface_water: { type: GraphQLString },
-        url: { type: GraphQLString },
+    }
+});
+
+
+/**
+ * Film GraphQL object.
+ */
+const Film = new GraphQLObjectType({
+    name: 'FilmType',
+    fields: {
+        title: { type: new GraphQLNonNull(GraphQLString) },
+        url: { type: new GraphQLNonNull(GraphQLString) },
+
+        episode_id: { type: new GraphQLNonNull(GraphQLString) },
+        opening_crawl: { type: new GraphQLNonNull(GraphQLString) },
+        director: { type: new GraphQLNonNull(GraphQLString) },
+        producer: { type: new GraphQLNonNull(GraphQLString) },
+        release_date: { type: new GraphQLNonNull(GraphQLString) },
+        created: { type: new GraphQLNonNull(GraphQLString) },
+        edited: { type: new GraphQLNonNull(GraphQLString) },
+
+        characters: { type: new GraphQLList(GraphQLString) },
+        planets: { type: new GraphQLList(GraphQLString) },
+        starships: { type: new GraphQLList(GraphQLString) },
+        vehicles: { type: new GraphQLList(GraphQLString) },
+        species: { type: new GraphQLList(GraphQLString) },
     }
 });
 
@@ -57,6 +88,12 @@ const Schema = new GraphQLSchema({
                 args: {
                     id: { type: new GraphQLNonNull(GraphQLInt) }
                 },
+            },
+            film: {
+                type: Film,
+                args: {
+                    id: { type: new GraphQLNonNull(GraphQLInt) }
+                },
             }
         }
     })
@@ -72,6 +109,9 @@ const Schema = new GraphQLSchema({
 const Resolvers = {
     planet: ({ id }) => {
         return lib.request('planets', id);
+    },
+    film: ({ id }) => {
+        return lib.request('films', id);
     }
 };
 
