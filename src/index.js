@@ -30,7 +30,6 @@ graphql(models.Schema, query, models.Resolvers, null, params)
     .then(res => console.log(JSON.stringify(res, null, 4)));
 
 
-// Sample query for testing, with a variables passed in on params to select a planet by ID.
 var query = `
     query FetchFilm($id: Int!) {
         film (id: $id) {
@@ -42,5 +41,22 @@ var query = `
     }
 `;
 var params = { id: 1 };
+graphql(models.Schema, query, models.Resolvers, null, params)
+   .then(res => console.log(JSON.stringify(res, null, 4)));
+
+
+var query = `
+    query {
+        allFilms {
+            title
+            producer
+            release_date
+        }
+        allPlanets {
+            name
+            climate
+        }
+    }
+`;
 graphql(models.Schema, query, models.Resolvers, null, params)
     .then(res => console.log(JSON.stringify(res, null, 4)));

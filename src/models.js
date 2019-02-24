@@ -94,7 +94,13 @@ const Schema = new GraphQLSchema({
                 args: {
                     id: { type: new GraphQLNonNull(GraphQLInt) }
                 },
-            }
+            },
+            allPlanets: {
+                type:  new GraphQLList(Planet),
+            },
+            allFilms: {
+                type:  new GraphQLList(Film),
+            },
         }
     })
 });
@@ -108,7 +114,9 @@ const Schema = new GraphQLSchema({
  */
 const Resolvers = {
     planet: ({ id }) => lib.requestAPI('planets', id),
+    allPlanets: () => lib.requestAPI('planets').then(data => data.results),
     film: ({ id }) => lib.requestAPI('films', id),
+    allFilms: () => lib.requestAPI('films').then(data => data.results),
 };
 
 
