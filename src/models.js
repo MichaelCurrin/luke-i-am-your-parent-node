@@ -107,12 +107,8 @@ const Schema = new GraphQLSchema({
  * and that value is used to create and execute a query URL.
  */
 const Resolvers = {
-    planet: ({ id }) => {
-        return lib.requestAPI('planets', id);
-    },
-    film: ({ id }) => {
-        return lib.requestAPI('films', id);
-    }
+    planet: ({ id }) => lib.requestAPI('planets', id),
+    film: ({ id }) => lib.requestAPI('films', id),
 };
 
 
