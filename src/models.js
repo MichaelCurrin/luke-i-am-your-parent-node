@@ -141,6 +141,68 @@ const Film = new GraphQLObjectType({
 
 
 /**
+ * Person GraphQL object.
+ */
+const Person = new GraphQLObjectType({
+    name: 'PersonType',
+    fields: {
+        name: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        url: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+
+        skin_color: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        hair_color: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        eye_color: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        birth_year: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        gender: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        height: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        mass: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+
+        created: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        edited: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+
+        homeworld: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+
+        films: {
+            type: new GraphQLList(GraphQLString)
+        },
+        species: {
+            type: new GraphQLList(GraphQLString)
+        },
+        starships: {
+            type: new GraphQLList(GraphQLString)
+        },
+        vehicles: {
+            type: new GraphQLList(GraphQLString)
+        },
+    }
+});
+
+
+/**
  * GraphQL schema.
  *
  * Defines how the objects in the model are structured. Setting args for an object
