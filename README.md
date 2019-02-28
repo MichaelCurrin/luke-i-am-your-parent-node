@@ -22,6 +22,14 @@ Graph data is all about nodes and how they relate to each other, hence the title
 
 Install [NodeJS](https://nodejs.org/en/).
 
+```bash
+# Mac OS
+brew install node
+
+# Linux - Debian
+sudo apt install nodejs
+```
+
 Clone this repo.
 
 ```bash
