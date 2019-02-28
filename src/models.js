@@ -27,21 +27,54 @@ const lib = require('./lib');
 const Planet = new GraphQLObjectType({
     name: 'PlanetType',
     fields: {
-        name: { type: new GraphQLNonNull(GraphQLString) },
-        url: { type: new GraphQLNonNull(GraphQLString) },
+        name: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        url: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
 
-        climate: { type: new GraphQLNonNull(GraphQLString) },
-        diameter: { type: new GraphQLNonNull(GraphQLString) },
-        edited: { type: new GraphQLNonNull(GraphQLString) },
-        gravity: { type: new GraphQLNonNull(GraphQLString) },
-        orbital_period: { type: new GraphQLNonNull(GraphQLString) },
-        population: { type: new GraphQLNonNull(GraphQLString) },
-        rotation_period: { type: new GraphQLNonNull(GraphQLString) },
-        surface_water: { type: new GraphQLNonNull(GraphQLString) },
-        terrain: { type: new GraphQLNonNull(GraphQLString) },
+        climate: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        diameter: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        edited: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        gravity: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        orbital_period: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        population: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        rotation_period: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        surface_water: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        terrain: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
 
-        films: { type: new GraphQLList(GraphQLString) },
-        residents: { type: new GraphQLList(GraphQLString) },
+        created: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        edited: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+
+        films: {
+            type: new GraphQLList(GraphQLString)
+        },
+        residents: {
+            type: new GraphQLList(GraphQLString)
+        },
     }
 });
 
@@ -52,22 +85,57 @@ const Planet = new GraphQLObjectType({
 const Film = new GraphQLObjectType({
     name: 'FilmType',
     fields: {
-        title: { type: new GraphQLNonNull(GraphQLString) },
-        url: { type: new GraphQLNonNull(GraphQLString) },
+        title: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        url: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
 
-        episode_id: { type: new GraphQLNonNull(GraphQLString) },
-        opening_crawl: { type: new GraphQLNonNull(GraphQLString) },
-        director: { type: new GraphQLNonNull(GraphQLString) },
-        producer: { type: new GraphQLNonNull(GraphQLString) },
-        release_date: { type: new GraphQLNonNull(GraphQLString) },
-        created: { type: new GraphQLNonNull(GraphQLString) },
-        edited: { type: new GraphQLNonNull(GraphQLString) },
+        episode_id: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        opening_crawl: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        director: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        producer: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        release_date: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        created: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        edited: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
 
-        characters: { type: new GraphQLList(GraphQLString) },
-        planets: { type: new GraphQLList(GraphQLString) },
-        starships: { type: new GraphQLList(GraphQLString) },
-        vehicles: { type: new GraphQLList(GraphQLString) },
-        species: { type: new GraphQLList(GraphQLString) },
+        created: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+        edited: {
+            type: new GraphQLNonNull(GraphQLString)
+        },
+
+        characters: {
+            type: new GraphQLList(GraphQLString)
+        },
+        planets: {
+            type: new GraphQLList(GraphQLString)
+        },
+        starships: {
+            type: new GraphQLList(GraphQLString)
+        },
+        vehicles: {
+            type: new GraphQLList(GraphQLString)
+        },
+        species: {
+            type: new GraphQLList(GraphQLString)
+        },
     }
 });
 
