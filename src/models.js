@@ -202,6 +202,24 @@ const Person = new GraphQLObjectType({
 });
 
 
+const Species = new GraphQLObjectType({
+    name: 'SpeciesType',
+    fields: {}
+});
+
+
+const Spaceship = new GraphQLObjectType({
+    name: 'SpaceshipType',
+    fields: {}
+});
+
+const Vehicle = new GraphQLObjectType({
+    name: 'VehicleType',
+    fields: {}
+});
+
+
+
 /**
  * GraphQL schema.
  *
@@ -216,20 +234,68 @@ const Schema = new GraphQLSchema({
             planet: {
                 type: Planet,
                 args: {
-                    id: { type: new GraphQLNonNull(GraphQLInt) }
+                    id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
                 },
             },
             film: {
                 type: Film,
                 args: {
-                    id: { type: new GraphQLNonNull(GraphQLInt) }
+                    id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
+                },
+            },
+            person: {
+                type: Person,
+                args: {
+                    id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
+                },
+            },
+            species: {
+                type: Species,
+                args: {
+                    id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
+                },
+            },
+            spaceship: {
+                type: Spaceship,
+                args: {
+                    id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
+                },
+            },
+            vehicle: {
+                type: Vehicle,
+                args: {
+                    id: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    }
                 },
             },
             allPlanets: {
-                type:  new GraphQLList(Planet),
+                type: new GraphQLList(Planet),
             },
             allFilms: {
-                type:  new GraphQLList(Film),
+                type: new GraphQLList(Film),
+            },
+            allPeople: {
+                type: new GraphQLList(Person),
+            },
+            allSpecies: {
+                type: new GraphQLList(Species),
+            },
+            allSpaceship: {
+                type: new GraphQLList(Spaceship),
+            },
+            allVehciles: {
+                type: new GraphQLList(Vehicle),
             },
         }
     })
@@ -243,10 +309,35 @@ const Schema = new GraphQLSchema({
  * and that value is used to create and execute a query URL.
  */
 const Resolvers = {
-    planet: ({ id }) => lib.requestAPI('planets', id),
+    planet: ({
+        id
+    }) => lib.requestAPI('planets', id),
     allPlanets: () => lib.requestAPI('planets').then(data => data.results),
-    film: ({ id }) => lib.requestAPI('films', id),
+
+    film: ({
+        id
+    }) => lib.requestAPI('films', id),
     allFilms: () => lib.requestAPI('films').then(data => data.results),
+
+    person: ({
+        id
+    }) => lib.requestAPI('people', id),
+    allPeople: () => lib.requestAPI('people').then(data => data.results),
+
+    species: ({
+        id
+    }) => lib.requestAPI('species', id),
+    allSpecies: () => lib.requestAPI('species').then(data => data.results),
+
+    starship: ({
+        id
+    }) => lib.requestAPI('starships', id),
+    allStarships: () => lib.requestAPI('starships').then(data => data.results),
+
+    vehicle: ({
+        id
+    }) => lib.requestAPI('vehicles', id),
+    allVehicles: () => lib.requestAPI('vehicles').then(data => data.results),
 };
 
 
