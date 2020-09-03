@@ -1,6 +1,6 @@
 {
   "name": "luke-i-am-your-parent-node",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "GraphQL wrapper for Star Wars REST API",
   "main": "src/index.js",
   "scripts": {
