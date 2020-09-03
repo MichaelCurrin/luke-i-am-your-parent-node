@@ -200,17 +200,41 @@ const Person = new GraphQLObjectType({
 
 const Species = new GraphQLObjectType({
   name: 'SpeciesType',
-  fields: {}
+  fields: {
+    name: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    classification: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    designation: {
+      type: new GraphQLNonNull(GraphQLString)
+    }
+  }
 });
 
 const Spaceship = new GraphQLObjectType({
   name: 'SpaceshipType',
-  fields: {}
+  fields: {
+    name: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    model: {
+      type: new GraphQLNonNull(GraphQLString)
+    }
+  }
 });
 
 const Vehicle = new GraphQLObjectType({
   name: 'VehicleType',
-  fields: {}
+  fields: {
+    name: {
+      type: new GraphQLNonNull(GraphQLString)
+    },
+    model: {
+      type: new GraphQLNonNull(GraphQLString)
+    }
+  }
 });
 
 /**
@@ -284,10 +308,10 @@ const Schema = new GraphQLSchema({
       allSpecies: {
         type: new GraphQLList(Species)
       },
-      allSpaceship: {
+      allStarships: {
         type: new GraphQLList(Spaceship)
       },
-      allVehciles: {
+      allVehicles: {
         type: new GraphQLList(Vehicle)
       }
     }

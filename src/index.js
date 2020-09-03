@@ -60,3 +60,31 @@ var query = `
 graphql(models.Schema, query, models.Resolvers, null, params).then(res =>
   console.log(JSON.stringify(res, null, 4))
 );
+
+var query = `
+    query FetchSpecies {
+        human: species (id: 1) {
+            name
+            classification
+            designation
+        }
+        droid: species (id: 2) {
+            name
+            classification
+            designation
+        }
+
+        allStarships  {
+            name
+            model
+        }
+
+        vehicle (id: 4) {
+            name
+            model
+        }
+    }
+`;
+graphql(models.Schema, query, models.Resolvers, null, null).then(res =>
+  console.log(JSON.stringify(res, null, 4))
+);
