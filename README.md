@@ -1,7 +1,9 @@
 # Luke, I Am Your Parent Node
 > GraphQL wrapper around the Star Wars API
 
-This was built around [swapi.co](https://swapi.co/), an API service which is longer available. But [swapi.dev](https://swapi.dev/) is a forked project which can be used as a replacement.
+An experiment is build a GraphQL API around an existing REST API and then querying the GraphQL and printing the output. Note that there is no GraphQL server here but one could be setup using a library.
+
+This was built around [swapi.co](https://swapi.co/) and now it uses [swapi.dev](https://swapi.dev/), a forked project which has the same or similar API.
 
 
 ## Purpose
@@ -15,6 +17,18 @@ This project is built on [Node.js](#installation). There is no Node.js server.
 This is a simple, fun project and is not meant to be complete or up to date.
 
 
+## Explore the API
+
+These are accessible in the browser easily using the Django interface.
+
+- https://swapi.dev
+- https://swapi.dev/api/ (API root)
+   https://swapi.dev/api/people/
+- https://swapi.dev/api/planets/
+- https://swapi.dev/api/planets/1/
+- https://swapi.dev/api/starships/9/
+
+
 ## Features
 
 Advantages of this wrapper:
@@ -23,10 +37,6 @@ Advantages of this wrapper:
 - Combine object type results (e.g. vehicles and planets) below each other in a single query.
 
 A demo script is supplied to test the requests.
-
-
-<!-- TODO: Use a single query to unpack nested data, such as residents on a planet. The wrapper handles the extra requests needed to lookup the object based on their IDs, however this can take longer when fetching many objects. -->
-
 
 ## Background
 
@@ -65,10 +75,19 @@ $ npm install
 
 ## Usage
 
-Run the main script. For now with fixed input.
+Run the demo script.
 
-```bash
-$ npm run main
+```sh
+$ npm run demo
+```
+
+It has hardcoded inputs so takes no arguments.
+
+Also note that the queries are queued up and the URLs logged, then each query response is logged.
+
+Sample output, truncated for readability:
+
+```
 Requesting: https://swapi.co/api/planets/1/
 {
     "data": {
