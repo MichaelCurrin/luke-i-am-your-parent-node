@@ -8,7 +8,6 @@ const { graphql } = require('graphql');
 
 const models = require('./models');
 
-
 // Sample query for testing, with a variables passed in on params to select a planet by ID.
 var query = `
     query FetchPlanet($id: Int!) {
@@ -26,26 +25,30 @@ var query = `
 var params = { id: 1 };
 // Do the query against the schema and resolvers then log the result,
 // which looks best formatted as indented JSON (rather than a JS object).
-graphql(models.Schema, query, models.Resolvers, null, params)
-    .then(res => console.log(JSON.stringify(res, null, 4)));
+graphql(models.Schema, query, models.Resolvers, null, params).then(res =>
+  console.log(JSON.stringify(res, null, 4))
+);
 
-
-var query = `
+query = `
     query FetchFilm($id: Int!) {
         film (id: $id) {
             title
             species
             created
             opening_crawl
+            planets {
+                name
+                terrain
+            }
         }
     }
 `;
-var params = { id: 1 };
-graphql(models.Schema, query, models.Resolvers, null, params)
-   .then(res => console.log(JSON.stringify(res, null, 4)));
+params = { id: 1 };
+graphql(models.Schema, query, models.Resolvers, null, params).then(res =>
+  console.log(JSON.stringify(res, null, 4))
+);
 
-
-var query = `
+query = `
     query {
         allFilms {
             title
@@ -58,5 +61,34 @@ var query = `
         }
     }
 `;
-graphql(models.Schema, query, models.Resolvers, null, params)
-    .then(res => console.log(JSON.stringify(res, null, 4)));
+graphql(models.Schema, query, models.Resolvers, null, params).then(res =>
+  console.log(JSON.stringify(res, null, 4))
+);
+
+query = `
+    query FetchSpecies {
+        human: species (id: 1) {
+            name
+            classification
+            designation
+        }
+        droid: species (id: 2) {
+            name
+            classification
+            designation
+        }
+
+        allStarships  {
+            name
+            model
+        }
+
+        vehicle (id: 4) {
+            name
+            model
+        }
+    }
+`;
+graphql(models.Schema, query, models.Resolvers, null, null).then(res =>
+  console.log(JSON.stringify(res, null, 4))
+);

@@ -1,10 +1,10 @@
 {
   "name": "luke-i-am-your-parent-node",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "GraphQL wrapper for Star Wars REST API",
   "main": "src/index.js",
   "scripts": {
-      "main": "node src/index.js"
+    "demo": "node src/index.js"
   },
   "repository": {
     "type": "git",
@@ -12,12 +12,12 @@
   },
   "keywords": [
     "graphql",
-    "star wars"
+    "star-wars"
   ],
   "author": "Michael Currin",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.18.0",
-    "graphql": "^14.1.1"
+    "axios": "^0.20.0",
+    "graphql": "^15.3.0"
   }
 }
