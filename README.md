@@ -1,6 +1,12 @@
 # Luke, I Am Your Parent Node
 > GraphQL wrapper around the Star Wars API
 
+[![GitHub tag](https://img.shields.io/github/tag/MichaelCurrin/luke-i-am-your-parent-node)](https://github.com/MichaelCurrin/luke-i-am-your-parent-node/tags/?include_prereleases&sort=semver)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue)](#license)
+
+[![Made with Node.js](https://img.shields.io/badge/Made_with-Node.js-blue.svg?logo=javascript)](https://nodejs.org)
+[![Made with GraphQL](https://img.shields.io/badge/Made_with-GraphQL-blue.svg?logo=graphql)](https://graphql.org)
+
 An experiment is build a GraphQL API around an existing REST API and then querying the GraphQL and printing the output. Note that there is no GraphQL server here but one could be setup using a library.
 
 This was built around [swapi.co](https://swapi.co/) and now it uses [swapi.dev](https://swapi.dev/), a forked project which has the same or similar API.
