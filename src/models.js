@@ -123,6 +123,7 @@ const Film = new GraphQLObjectType({
       type: new GraphQLList(GraphQLString)
     },
     planets: {
+      // type: new GraphQLList(Planet)
       type: new GraphQLList(GraphQLString)
     },
     starships: {
@@ -321,8 +322,15 @@ const Schema = new GraphQLSchema({
 /**
  * GraphQL resolving functions.
  *
- * Defines how to handle a query for each object type. An ID is expected for the resource type
- * and that value is used to create and execute a query URL.
+ * Defines how to handle a query for each object type.
+ *
+ * An ID is expected for the resource type and
+ * that value is used to create and execute a query URL.
+ *
+ * The Star Wars API returns all fields, so don't specify what fields we want, just the object ID.
+ *
+ * Note that Film is setup to handles nested queries here. Rather than just
+ * returning Planets as an array of strings, the actual Planet objects are fetched and then the result returned.
  */
 const Resolvers = {
   planet: ({ id }) => lib.requestAPI('planets', id),
