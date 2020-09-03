@@ -1,7 +1,7 @@
 # Luke, I Am Your Parent Node
 > GraphQL wrapper around the Star Wars API
 
-The [swapi.co](https://swapi.co/) service is longer available,but [swapi.dev](https://swapi.dev/) is a forked project which can be used. This project hasn't been tested against it.
+This was built around [swapi.co](https://swapi.co/), an API service which is longer available. But [swapi.dev](https://swapi.dev/) is a forked project which can be used as a replacement.
 
 
 ## Purpose
