@@ -123,8 +123,8 @@ const Film = new GraphQLObjectType({
       type: new GraphQLList(GraphQLString)
     },
     planets: {
-      // type: new GraphQLList(Planet)
-      type: new GraphQLList(GraphQLString)
+      type: new GraphQLList(Planet)
+      // type: new GraphQLList(GraphQLString)
     },
     starships: {
       type: new GraphQLList(GraphQLString)
@@ -336,8 +336,24 @@ const Resolvers = {
   planet: ({ id }) => lib.requestAPI('planets', id),
   allPlanets: () => lib.requestAPI('planets').then(data => data.results),
 
-  film: ({ id }) => lib.requestAPI('films', id),
-  allFilms: () => lib.requestAPI('films').then(data => data.results),
+  film: ({ id }) =>
+    lib.requestAPI('films', id).then(function(data) {
+      // Use .all to resolve all promises in the array before returning.
+      data.planets = Promise.all(
+        data.planets
+          .map(function(planetUrl) {
+            // Extract number from '.../planets/N/' URL. The match structure
+            // means we need the first item.
+            return planetUrl.match(/\d/)[0];
+          })
+          .map(function(planetId) {
+            return lib.requestAPI('planets', planetId);
+          })
+      );
+
+      return data;
+    }),
+  allFilms: () => lib.requestAPI('films'),
 
   person: ({ id }) => lib.requestAPI('people', id),
   allPeople: () => lib.requestAPI('people').then(data => data.results),
