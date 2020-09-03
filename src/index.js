@@ -29,7 +29,7 @@ graphql(models.Schema, query, models.Resolvers, null, params).then(res =>
   console.log(JSON.stringify(res, null, 4))
 );
 
-var query = `
+query = `
     query FetchFilm($id: Int!) {
         film (id: $id) {
             title
@@ -43,12 +43,12 @@ var query = `
         }
     }
 `;
-var params = { id: 1 };
+params = { id: 1 };
 graphql(models.Schema, query, models.Resolvers, null, params).then(res =>
   console.log(JSON.stringify(res, null, 4))
 );
 
-var query = `
+query = `
     query {
         allFilms {
             title
@@ -65,7 +65,7 @@ graphql(models.Schema, query, models.Resolvers, null, params).then(res =>
   console.log(JSON.stringify(res, null, 4))
 );
 
-var query = `
+query = `
     query FetchSpecies {
         human: species (id: 1) {
             name

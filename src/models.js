@@ -39,9 +39,6 @@ const Planet = new GraphQLObjectType({
     diameter: {
       type: new GraphQLNonNull(GraphQLString)
     },
-    edited: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
     gravity: {
       type: new GraphQLNonNull(GraphQLString)
     },
@@ -103,12 +100,6 @@ const Film = new GraphQLObjectType({
       type: new GraphQLNonNull(GraphQLString)
     },
     release_date: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    created: {
-      type: new GraphQLNonNull(GraphQLString)
-    },
-    edited: {
       type: new GraphQLNonNull(GraphQLString)
     },
 
