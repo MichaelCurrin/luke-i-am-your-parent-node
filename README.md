@@ -38,6 +38,7 @@ Advantages of this wrapper:
 
 A demo script is supplied to test the requests.
 
+
 ## Background
 
 I attended an introductory GraphQL workshop at [CodeBridge](https://codebridge.org.za/). An exercise at the end was of the one section was to use [NodeJS](https://nodejs.org/en/) and [graphql-js](https://graphql.org/graphql-js/) to build a GraphQL wrapper around an existing REST API. I decided on the Star Wars API which I'd found before and that used that for this repo.
@@ -80,6 +81,8 @@ Run the demo script.
 ```sh
 $ npm run demo
 ```
+
+This runs [index.js](/src/index.js). It even does nested queries a Films to convert to the Planet URL strings into planet objects.
 
 It has hardcoded inputs so takes no arguments.
 
