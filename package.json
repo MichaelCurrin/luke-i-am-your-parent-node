@@ -1,7 +1,7 @@
 {
   "name": "luke-i-am-your-parent-node",
   "description": "GraphQL wrapper for Star Wars REST API",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "MichaelCurrin",
   "license": "MIT",
   "repository": {
